@@ -1,0 +1,26 @@
+temp<-c(85, 80, 83, 70, 68, 65, 64,72,69,75,75,72,81,71)
+humid <- c(85,90,86,96,80,70,65,95,70,80,70,90,75,91)
+play <-c(2,2,1,1,1,2,1,2,1,1,1,1,1,2)
+dat<- data.frame(temp,humid, play)
+dat1 <- subset(dat, dat$play==1)
+dat2 <- subset(dat, dat$play==2)
+apply(dat1, 2, mean)
+apply(dat2, 2, mean)
+apply(dat1, 2, sd)
+apply(dat2, 2, sd)
+
+temp1_mean <- mean(dat1$temp)
+temp1_sd <- sd(dat1$temp)
+temp2_mean <- mean(dat2$temp)
+temp2_sd <- sd(dat2$temp)
+
+humid1_mean <- mean(dat1$humid)
+humid1_sd <- sd(dat1$humid)
+humid2_mean <- mean(dat2$humid)
+humid2_sd <- sd(dat2$humid)
+
+p_temp1 <- dnorm(60, temp1_mean, temp1_sd)
+p_temp2 <- dnorm(60, temp2_mean, temp2_sd)
+
+p_humid1 <- dnorm(62, humid1_mean, humid1_sd)
+p_humid2 <- dnorm(62, humid2_mean, humid2_sd)
